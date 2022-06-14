@@ -36,34 +36,18 @@ int main(){
 
     league l2;
     l2.play();
-    l2.longest_streeks();
-//     std::random_device rd{};
-//     std::mt19937 gen{rd()};
-//     std::normal_distribution<double> d{77.5,8};
- 
-   
-//     const int nrolls=10000;  // number of experiments
-//     const int nstars=1000;    // maximum number of stars to distribute
+    // l2.longest_streeks();
+    // l2.points_win_lose();
+    // l2.points_diff();
+
+    // l2.top_teams(12);
+    // l2.score_more();
+
+    l2.all_stats();
 
 
 
-//     int p[200]={};
-//     int count=0;
-//     for (int i=0; i<nrolls; ++i) {
-//         double num=d(gen);
-       
-//         if(num>=67 and num<=83){
-//             count++;
-//         }
-  
-//         if ((num>=50.0)&&(num<=100.0)) ++p[int(num)];
-//     }
 
-
-//   for (int i=50; i<100; ++i) {
-//     std::cout << i << "-" << (i+1) << ": ";
-//     std::cout << std::string(p[i]*nstars/nrolls,'*') << std::endl;
-//   }
 
   return 0;
 }
