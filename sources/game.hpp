@@ -39,10 +39,20 @@ class game {
         if (this->_score_home>=this->_score_away){
             h->update_num_wins();
             a->update_num_losses();
+            h->update_tmp_win(1);
+            h->update_win_streak(h->_tmp_win);
+            a->update_tmp_win(0);
+            a->update_tmp_lose(1);
+            a->update_lose_streak(a->_tmp_lose);
         }
         else{
             a->update_num_wins();
             h->update_num_losses(); 
+            a->update_tmp_win(1);
+            a->update_win_streak(a->_tmp_win);
+            h->update_tmp_win(0);
+            h->update_tmp_lose(1);
+            h->update_lose_streak(a->_tmp_lose);
         }
 
 

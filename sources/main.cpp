@@ -7,9 +7,9 @@ using namespace std;
 #include <cmath>
 # include <ctime>
 
-#include "sources/team.hpp"
-#include "sources/game.hpp"
-#include "sources/league.hpp"
+#include "team.hpp"
+#include "game.hpp"
+#include "league.hpp"
 
 
 int main(){
@@ -28,9 +28,15 @@ int main(){
     // cout<<""<<endl;
     // b.print();
 
-    vector<team*> teams{new team("a",0.1),new team("b",0.2),new team("c",0.3),new team("d",0.4),new team("e",0.5)};
-    league l(teams);
-    l.play();
+    // vector<team*> teams{new team("a",0.1),new team("b",0.2),new team("c",0.3),new team("d",0.4),new team("e",0.5)};
+    // league l(teams);
+    // l.play();
+    // l.longest_streeks();
+
+
+    league l2;
+    l2.play();
+    l2.longest_streeks();
 //     std::random_device rd{};
 //     std::mt19937 gen{rd()};
 //     std::normal_distribution<double> d{77.5,8};

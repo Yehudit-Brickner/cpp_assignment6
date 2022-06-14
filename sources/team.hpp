@@ -19,8 +19,12 @@ class team {
     int _points_against;
     int _num_wins;
     int _num_losses;
+    int _win_streek;
+    int _lose_streek;
+    int _tmp_win;
+    int _tmp_lose;
     
-    team(string s, double sk) : _name(s), _skill(sk), _points_for(0),_points_against(0),_num_wins(0),_num_losses(){}
+    team(string s, double sk) : _name(s), _skill(sk), _points_for(0),_points_against(0),_num_wins(0),_num_losses(),_win_streek(0),_tmp_win(0),_lose_streek(0),_tmp_lose(0){}
 
     void print(){
         cout<<"name= "<<this->_name<<endl;
@@ -29,6 +33,8 @@ class team {
         cout<<"points against= "<<this->_points_against<<endl;
         cout<<"num wins= "<<this->_num_wins<<endl;
         cout<<"num losses= "<<this->_num_losses<<endl;
+        cout<<"win streek= "<<this->_win_streek<<endl;
+        cout<<"lose streek= "<<this->_lose_streek<<endl;
     }
 
     void update_points_for(int x){
@@ -45,5 +51,42 @@ class team {
 
     void update_num_losses(){
         this->_num_losses=this->_num_losses+1;
+    }
+
+    void update_win_streak(int x){
+        if (x>this->_win_streek){
+            this->_win_streek=x;
+        }
+    }
+
+     void update_lose_streak(int x){
+        if (x>this->_lose_streek){
+            this->_lose_streek=x;
+        }
+    }
+
+
+    void update_tmp_win(int x){
+        if (x==0){
+            this->_tmp_win=0;
+        }
+        else if(x==1){
+            this->_tmp_win=this->_tmp_win+1;
+        }
+        else{
+            throw std::invalid_argument( "wrong num" );
+        }
+    }
+
+    void update_tmp_lose(int x){
+        if (x==0){
+            this->_tmp_lose=0;
+        }
+        else if(x==1){
+            this->_tmp_lose=this->_tmp_lose+1;
+        }
+        else{
+            throw std::invalid_argument( "wrong num" );
+        }
     }
 };
