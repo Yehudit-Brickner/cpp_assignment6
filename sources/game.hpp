@@ -13,11 +13,16 @@
 
 #include "team.hpp"
 
+const int awaymean=75;
+const double homemean=77.5;
+const int eight=8;
+const int ten=10;
+
 using namespace std;
 std::random_device rd{};
 std::mt19937 gen{rd()};
-std::normal_distribution<double> away{75,8};
-std::normal_distribution<double> home{77.5,8};
+std::normal_distribution<double> away{awaymean,eight};
+std::normal_distribution<double> home{homemean,eight};
 
 class game {
     public:
@@ -30,8 +35,8 @@ class game {
     game(team* h, team* a) :_home(h), _away(a){
         this->_home=h;
         this->_away=a;
-        this->_score_away=int(away(gen)+10*a->_skill);
-        this->_score_home=int(home(gen)+10*h->_skill);
+        this->_score_away=int(away(gen)+ten*a->_skill);
+        this->_score_home=int(home(gen)+ten*h->_skill);
         h->update_points_for(this->_score_home);
         h->update_points_against(this->_score_away);
         a->update_points_for(this->_score_away);
@@ -58,7 +63,7 @@ class game {
 
     }
 
-    void print(){
+    void print() const{
         cout<<"home= " << this->_home->_name<<endl;
         cout<<"away= " << this->_away->_name<<endl;
         cout<<"score away= "<<this->_score_away<<endl;

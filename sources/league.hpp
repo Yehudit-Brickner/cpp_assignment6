@@ -9,38 +9,46 @@
 #include <vector>
 #include <queue>
 #include <stack>
-#include "team.hpp"
+#include "game.hpp"
 
 using namespace std;
+
+
+const int twenty=20;
+const double twentyd=20;
 
 class league {
     public:
     vector<team*> _teams;
 
-    league(vector<team*> t){
+    league(vector<team*> &t){
         this->_teams=t; 
-        if (t.size()<20){
-            for (int i=t.size();i<20;i++){
+        if (t.size()<twenty){
+            for (int i=t.size();i<twenty;i++){
                 int num=i;
                 string n="team";
                 n+=to_string(num);
-                double sk=i/20.0;
+                double sk=i/twentyd;
                 this->_teams.push_back( new team(n,sk));
             }
         }      
     }
 
     league(){
-        vector<team*> t;
-        this->_teams=t;
-        for (int i=0;i<20;i++){
+        for (int i=0;i<twenty;i++){
             int num=i;
             string n="team";
             n+=to_string(num);
-            double sk=i/20.0;
+            double sk=i/twentyd;
             this->_teams.push_back( new team(n,sk));
         }
           
+    }
+
+    ~league(){
+        for (unsigned long i=0; i<this->_teams.size();i++){
+            delete(this->_teams[i]);    
+        }
     }
 
     void play(){
@@ -50,11 +58,7 @@ class league {
                 game g(this->_teams[j],this->_teams[(i+j)%this->_teams.size()]);
             }
 
-        }
-        // for (unsigned long i=0; i<this->_teams.size();i++){
-        //     this->_teams[i]->print();
-        //     cout<<endl;
-        // }    
+        }  
     }
 
 
@@ -113,7 +117,7 @@ class league {
 
 
     void points_win_lose(){
-        cout<< "\nthe prder of teams by the amount of games won"<<endl;
+        cout<< "\nthe order of teams by the amount of games won"<<endl;
         std::sort(_teams.begin(), _teams.end(), numwins);
         for (unsigned long i=0; i<this->_teams.size();i++){
             cout<<"team: "<<_teams[i]->_name<<"   num wins: "<<_teams[i]->_num_wins<< "   num losses: "<< _teams[i]->_num_losses<< 
@@ -150,13 +154,13 @@ class league {
                 count++;
             }
         }
-        cout<< "\nthe number of teams who score more than they were scored on is: "<< count<<endl;
+        cout<< "\nthe number of teams who scored more than they were scored on is: "<< count<<endl;
     }
 
 
- void all_stats(){
-    top_teams(5);
-    score_more();
-    longest_streeks();
- }
+    void all_stats(unsigned long x){
+        top_teams(x);
+        score_more();
+        longest_streeks();
+    }
 };
